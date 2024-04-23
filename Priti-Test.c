@@ -1,20 +1,22 @@
-// Sum of elements in 1d array
 
 #include <stdio.h>
-int main(){
-    int n,i;
-    int sum=0;
-    printf("Enter the number of elements in the array: ");
-    scanf("%d",&n);
-    int arr[n];
-    printf("Enter the elements of the array: ");
-    for(i=0;i<n;i++){
-        scanf("%d",&arr[i]);
+    void fun1(char *s1, char *s2){
+        char * temp = s1;
+        s1 = s2;
+        s2 = temp;
     }
-    for(i=0;i<n;i++){
-        sum+=arr[i];
+    void fun2(char **s1, char **s2){
+        char * temp = *s1;
+        *s1 = *s2;
+        *s2 = temp;
     }
-    printf("The sum of the elements of the array is: %d",sum);
-    return 0;
-}
 
+    int main(){
+        char *str1 = "Hi";
+        char *str2 = "Bye";
+        fun1(str1, str2);
+        printf("%s %s\n", str1, str2);
+        fun2(&str1, &str2);
+        printf("%s %s\n", str1, str2);
+        return 0;
+    }
